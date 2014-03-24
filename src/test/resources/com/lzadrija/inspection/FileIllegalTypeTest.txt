@@ -1,0 +1,2 @@
+type=TEXT;value=Prvi primjer nekog teksta;
+type=BINARY_NUMBER;value=001101001011;

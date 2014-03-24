@@ -1,0 +1,5 @@
+type=TEXT;value=Prvi primjernekog teksta;
+type=TEXT;value=Drugi primjer nekog teksta;
+type=NUMBER;value=1234;
+type=NUMBER;value=1234aaa;
+type=TEXT;value=1234aaa;

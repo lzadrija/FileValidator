@@ -1,0 +1,2 @@
+value=Prvi primjer nekog teksta;type=TEXT;
+type=NUMBER;value=-.1894Prvi primjer nekog teksta;

@@ -1,0 +1,84 @@
+body
+{
+	line-height: 2.0em;
+	font-family: "MS Sans Serif";
+}
+
+#title, #errorTitle 
+{
+	line-height: 3.6em;
+	color: #669;
+}
+
+#table-form
+{
+	background-color: #EEFFEE;
+	padding: 10px 10px;
+	border: 0px;
+	border-spacing: 5px;
+}
+
+#radio
+{
+	font-size: 12px;
+}
+
+#validate_button 
+{
+	padding: 5px 10px;
+	font-size: 17px;
+	color: white;
+	background-color: #669;
+}
+
+#validate_button_row
+{
+	padding: 20px 40px;
+}
+
+#error_msg
+{
+	color: red;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#result-title, #return-link
+{
+	font-size: 17px;
+}
+
+#validation-info
+{
+	font-size: 15px;
+}
+
+#results
+{
+	font-size: 12px;
+	margin: 45px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #6cf;
+	padding: 0px;
+	border-spacing: 0px;
+}
+#results th
+{
+	padding: 20px;
+	font-weight: normal;
+	font-size: 13px;
+	color: #039;
+	text-transform: uppercase;
+	border-right: 1px solid #0865c2;
+	border-top: 1px solid #0865c2;
+	border-left: 1px solid #0865c2;
+	border-bottom: 1px solid #fff;
+}
+#results td
+{
+	padding: 10px 20px;
+	color: #669;
+	border-right: 1px dashed #6cf;
+}
