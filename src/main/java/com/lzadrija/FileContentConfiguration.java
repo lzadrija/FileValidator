@@ -1,5 +1,5 @@
 /**
- * 
+ * Base package, contains classes for initializing this web application.
  */
 package com.lzadrija;
 
@@ -20,6 +20,8 @@ import com.lzadrija.validation.FileValidatorService;
 import com.lzadrija.validation.value.ValueValidator;
 
 /**
+ * Sets up the configuration necessary for file inspection and validation.
+ * 
  * @author lzadrija
  * 
  */
@@ -37,11 +39,18 @@ public class FileContentConfiguration {
 	private Environment env;
 
 	/**
+	 * Dynamically instantiates value validators for every valid value type in a
+	 * file that is being validated.
 	 * 
-	 * @return
+	 * @return map with value validator for every valid value type from file
+	 *         that is validated
 	 * @throws ClassNotFoundException
+	 *             if the value validator class cannot be located
 	 * @throws InstantiationException
+	 *             if the value validator object cannot be instantiated
 	 * @throws IllegalAccessException
+	 *             if the value validator class or its nullary constructor is
+	 *             not accessible
 	 */
 	private Map<String, ValueValidator> loadValueValidators() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 
@@ -59,16 +68,21 @@ public class FileContentConfiguration {
 				validatorsByTypeMap.put(type.toString(), validator);
 			}
 		}
-
 		return validatorsByTypeMap;
 	}
 
 	/**
+	 * Creates and returns the file inspector object used for verifying that the
+	 * file that is to be validated contains the appropriate structure.
 	 * 
-	 * @return
+	 * @return file inspector
 	 * @throws ClassNotFoundException
+	 *             if the value validator class cannot be located
 	 * @throws InstantiationException
+	 *             if the value validator object cannot be instantiated
 	 * @throws IllegalAccessException
+	 *             if the value validator class or its nullary constructor is
+	 *             not accessible
 	 */
 	@Bean
 	public FileInspector loadFileInspector() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -77,11 +91,17 @@ public class FileContentConfiguration {
 	}
 
 	/**
+	 * Creates and returns the file validator service used for validating the
+	 * content of a file with the appropriate structure.
 	 * 
-	 * @return
-	 * @throws IllegalAccessException
-	 * @throws InstantiationException
+	 * @return file validator service
 	 * @throws ClassNotFoundException
+	 *             if the value validator class cannot be located
+	 * @throws InstantiationException
+	 *             if the value validator object cannot be instantiated
+	 * @throws IllegalAccessException
+	 *             if the value validator class or its nullary constructor is
+	 *             not accessible
 	 */
 	@Bean
 	public FileValidatorService loadFileValidatorService() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
