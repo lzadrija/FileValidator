@@ -1,5 +1,5 @@
 /**
- * 
+ * Contains classes for file content structure inspection.
  */
 package com.lzadrija.inspection;
 
@@ -23,6 +23,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lzadrija.validation.value.ValueValidator;
 
 /**
+ * Service used for the inspection of the structure of the file content. If
+ * every line in the file does not follow the speciffic pattern, the file cannot
+ * be validated. Every line must be structured in the following manner:
+ * {@code type=<VALUE_TYPE>;value=<VALUE>;}, where the {@code <VALUE_TYPE>}
+ * represents the type of the {@code value} part of the line.
+ * 
  * @author lzadrija
  * 
  */
@@ -39,16 +45,23 @@ public class FileInspector {
 	private Environment env;
 
 	/**
-	 * 
+	 * Default constructor.
 	 */
 	public FileInspector() {
 
 	}
 
 	/**
+	 * Constructor.
 	 * 
+	 * @param structure
+	 *            the descriptive structure that that the line form the file
+	 *            must conform to: {@code type=<VALUE_TYPE>;value=<VALUE>;}
 	 * @param pattern
+	 *            compiled representation of a regular expression that is used
+	 *            to extract type and value from the line
 	 * @param validatorsByTypeMap
+	 *            map with value types and coresponding value validators
 	 */
 	public FileInspector(String structure, Pattern pattern, Map<String, ValueValidator> validatorsByTypeMap) {
 
@@ -58,9 +71,19 @@ public class FileInspector {
 	}
 
 	/**
+	 * Checks if the given multipart file can be opened and read, and if it can,
+	 * inspects if its content conforms to the given structure. The file
+	 * inspection is considered a success if the following requirements are met:
+	 * 1. The file is not empty
+	 * 2. Every file line has the following structure:
+	 * {@code type=<VALUE_TYPE>;value=<VALUE>;},
+	 * 3. {@code <VALUE_TYPE>} must be one of the following types:
+	 * {@code TEXT, NUMBER}
 	 * 
 	 * @param file
-	 * @return
+	 *            multipart file to inspect
+	 * @return file inspection response that contains the content of the file
+	 *         and the inspection status with description
 	 */
 	public FileInspectorResponse checkFileStructure(MultipartFile file) {
 
@@ -73,7 +96,7 @@ public class FileInspector {
 			String line;
 			while ((line = br.readLine()) != null && errorMsg == null) {
 
-				errorMsg = inspectEntry(line, file);
+				errorMsg = inspectLine(line, file.getOriginalFilename());
 				lines.add(line);
 			}
 		} catch (IOException ioException) {
@@ -87,35 +110,44 @@ public class FileInspector {
 	}
 
 	/**
+	 * Inspects if the file line has the appropriate structure.
 	 * 
 	 * @param line
-	 * @param file
-	 * @return
+	 *            line to inspect
+	 * @param fileName
+	 *            name of the file that contains the given line
+	 * @return error message if the line does not have the appropriate structure
+	 *         or null
 	 */
-	private String inspectEntry(String line, MultipartFile file) {
+	private String inspectLine(String line, String fileName) {
 
 		String valueType, errorMsg = null;
 
 		Matcher matcher = entryPattern.matcher(line);
 		if (!matcher.matches()) {
-			errorMsg = getMsg(MsgKey.FILE_ENTRY_INPROPER_STRUCT, line, file.getOriginalFilename(), entryStructure);
+			errorMsg = getMsg(MsgKey.FILE_ENTRY_INPROPER_STRUCT, line, fileName, entryStructure);
 		} else if (!validatorsByType.containsKey(valueType = matcher.group(1))) {
-			errorMsg = getMsg(MsgKey.INVALID_VALUE_TYPE, file.getOriginalFilename(), valueType, validatorsByType.keySet());
+			errorMsg = getMsg(MsgKey.INVALID_VALUE_TYPE, fileName, valueType, validatorsByType.keySet());
 		}
 		return errorMsg;
 	}
 
 	/**
+	 * Returns the formatted message that describes the result of file content
+	 * inspection.
 	 * 
 	 * @param key
+	 *            key to retrieve message from the properties file
 	 * @param params
-	 * @return
+	 *            parameters for the message
+	 * @return formatted description message
 	 */
 	private String getMsg(MsgKey key, Object... params) {
 		return MessageFormat.format(env.getRequiredProperty(key.getKey()), params);
 	}
 
 	/**
+	 * Key for the appropriate inspection description message.
 	 * 
 	 * @author lzadrija
 	 * 
@@ -131,19 +163,26 @@ public class FileInspector {
 		private final String key;
 
 		/**
+		 * Constructor.
 		 * 
 		 * @param key
+		 *            key for the inspection description message
 		 */
 		private MsgKey(String key) {
 			this.key = key;
 		}
 
+		/**
+		 * Returns the inspection message.
+		 * 
+		 * @return key to retrieve message from the message properties file
+		 */
 		public String getKey() {
 			return key;
 		}
 
 		/**
-		 * 
+		 * Returns the key for the inspection message.
 		 */
 		@Override
 		public String toString() {

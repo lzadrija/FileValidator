@@ -16,7 +16,7 @@ import org.springframework.core.env.Environment;
 
 import com.lzadrija.inspection.FileInspector;
 import com.lzadrija.persistence.db.model.ValueType;
-import com.lzadrija.validation.FileValidatorService;
+import com.lzadrija.validation.ValidatorService;
 import com.lzadrija.validation.value.ValueValidator;
 
 /**
@@ -104,9 +104,9 @@ public class FileContentConfiguration {
 	 *             not accessible
 	 */
 	@Bean
-	public FileValidatorService loadFileValidatorService() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+	public ValidatorService loadFileValidatorService() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		Pattern entryPattern = Pattern.compile(env.getRequiredProperty(ENTRY_PATTERN_KEY));
-		return new FileValidatorService(entryPattern, loadValueValidators());
+		return new ValidatorService(entryPattern, loadValueValidators());
 	}
 
 }

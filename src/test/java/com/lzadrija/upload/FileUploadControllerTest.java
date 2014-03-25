@@ -48,7 +48,7 @@ import com.lzadrija.persistence.db.model.Entry;
 import com.lzadrija.persistence.db.model.File;
 import com.lzadrija.persistence.db.model.ValidationResult;
 import com.lzadrija.persistence.db.model.ValueType;
-import com.lzadrija.validation.FileValidatorService;
+import com.lzadrija.validation.ValidatorService;
 
 /**
  * @author lzadrija
@@ -65,7 +65,7 @@ public class FileUploadControllerTest {
 	@Mock
 	private FileInspector fileInspector;
 	@Mock
-	private FileValidatorService fileValidatorService;
+	private ValidatorService fileValidatorService;
 	@Mock
 	private StorageService storageService;
 
@@ -226,7 +226,7 @@ public class FileUploadControllerTest {
 		entries.add(new Entry("1234aaa", ValueType.NUMBER, ValidationResult.INVALID));
 		entries.add(new Entry("1234aaa", ValueType.TEXT, ValidationResult.VALID));
 		validatedFile.setEntries(entries);
-		when(fileValidatorService.validateFile(LEGAL_FILE_TO_VALIDATE_NAME, lines)).thenReturn(validatedFile);
+		when(fileValidatorService.validate(LEGAL_FILE_TO_VALIDATE_NAME, lines)).thenReturn(validatedFile);
 
 		return validatedFile;
 

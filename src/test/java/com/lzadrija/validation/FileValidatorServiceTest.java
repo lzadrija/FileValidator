@@ -30,11 +30,11 @@ public class FileValidatorServiceTest {
 
 	@Autowired
 	@Qualifier("loadFileValidatorService")
-	private FileValidatorService validatorService;
+	private ValidatorService validatorService;
 
 	/**
 	 * Test method for
-	 * {@link com.lzadrija.validation.FileValidatorService#validateFile(org.springframework.web.multipart.MultipartFile, java.lang.String)}
+	 * {@link com.lzadrija.validation.ValidatorService#validate(org.springframework.web.multipart.MultipartFile, java.lang.String)}
 	 */
 	@Test
 	public void testValidateAndStoreFile() {
@@ -47,7 +47,7 @@ public class FileValidatorServiceTest {
 		lines.add("type=NUMBER;value=1234aaa;");
 		lines.add("type=TEXT;value=1234aaa;");
 		lines.add("type=TEXT;value=1235.1256;");
-		File validatedFile = validatorService.validateFile(FILE_NAME, lines);
+		File validatedFile = validatorService.validate(FILE_NAME, lines);
 
 		assertNotNull(validatedFile);
 	}
