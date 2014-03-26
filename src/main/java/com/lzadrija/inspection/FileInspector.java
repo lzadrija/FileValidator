@@ -154,10 +154,30 @@ public class FileInspector {
 	 */
 	private enum MsgKey {
 
+		/**
+		 * Key for retrieving the message that is shown when the multipart file
+		 * is empty.
+		 */
 		FILE_EMPTY("multipartFile.empty"),
+		/**
+		 * Key for retrieving the message that is shown when the multipart file
+		 * can not be opened for reading.
+		 */
 		FILE_UNABLE_TO_READ("multipartFile.unableToRead"),
+		/**
+		 * Key for retrieving the message that is shown when the multipart file
+		 * does not have the appropriate structure.
+		 */
 		FILE_ENTRY_INPROPER_STRUCT("fileEntry.improperStructure"),
+		/**
+		 * Key for retrieving the message that is shown when the line from the
+		 * multipart file contains value of unknown type.
+		 */
 		INVALID_VALUE_TYPE("valueType.invalid"),
+		/**
+		 * Key for retrieving the message that is shown when the multipart file
+		 * is successfuly inspected.
+		 */
 		FILE_INSPECT_SUCCESS("inspection.success");
 
 		private final String key;
@@ -173,7 +193,7 @@ public class FileInspector {
 		}
 
 		/**
-		 * Returns the inspection message.
+		 * Returns the key for the inspection message.
 		 * 
 		 * @return key to retrieve message from the message properties file
 		 */

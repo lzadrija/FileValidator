@@ -54,7 +54,7 @@ public class FileRepositoryTest {
 
 		file.setEntries(entries);
 
-		File savedFile = fileRepository.saveAndFlush(file);
+		File savedFile = fileRepository.save(file);
 		assertNotNull(savedFile);
 	}
 }

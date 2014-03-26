@@ -11,10 +11,11 @@ import com.lzadrija.persistence.db.model.ValidationResult;
 
 /**
  * An implementation of {@link ValueValidator} that is used for the validation
- * of the text values from the file line. Each line that contains values of type
- * {@code TEXT} is validated using validator of this type. Text values that are
- * considered valid can contain any printable character. Lines that contain text
- * values with non-printable characters are marked invalid by this validator.
+ * of the text values from the file line.
+ * Each line that contains values of type {@code TEXT} is validated using
+ * validator of this type. Text values that are considered valid can contain
+ * any printable character. Lines that contain text values with non-printable
+ * characters are marked invalid by this validator.
  * 
  * @author lzadrija
  * 

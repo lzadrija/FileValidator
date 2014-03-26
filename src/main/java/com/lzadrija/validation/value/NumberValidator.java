@@ -11,11 +11,11 @@ import com.lzadrija.persistence.db.model.ValidationResult;
 
 /**
  * An implementation of {@link ValueValidator} that is used for the validation
- * of the numeric values from the file line. Each line that contains value of
- * type {@code NUMBER} is validated using validator of this type. Numeric value
- * that is considered valid can only be an integer or decimal number, positive
- * or negative. This validator marks all other values of type {@code NUMBER} as
- * invalid.
+ * of the numeric values from the file line.
+ * Each line that contains value of type {@code NUMBER} is validated using
+ * validator of this type. Numeric value that is considered valid can only be an
+ * integer or decimal number, positive or negative. This validator marks all
+ * other values of type {@code NUMBER} as invalid.
  * 
  * @author lzadrija
  * 

@@ -1,5 +1,6 @@
 /**
- * 
+ * Contains model and persistence related classes - for storing data to database
+ * and on disk.
  */
 package com.lzadrija.persistence;
 
@@ -22,6 +23,9 @@ import com.lzadrija.persistence.db.FileRepository;
 import com.lzadrija.persistence.db.model.File;
 
 /**
+ * Service used for storing the validated file to database, and optionally on
+ * disk.
+ * 
  * @author lzadrija
  * 
  */
@@ -41,38 +45,54 @@ public class StorageService {
 	private Environment env;
 
 	/**
-	 * 
+	 * Default constructor.
 	 */
 	public StorageService() {
 	}
 
 	/**
+	 * Constructor.
 	 * 
 	 * @param resultFileName
+	 *            Name of the file in which the validated result can be
+	 *            optionally stored
 	 * @param resultFormat
-	 * @param crudFilesRepository
+	 *            format used for storing validated results to file
+	 * @param validatedFilesfrepository
+	 *            used for storing validated files to database and providing
+	 *            CRUD operations on stored data
 	 */
-	public StorageService(String resultFileName, String resultFormat, FileRepository crudFilesRepository) {
+	public StorageService(String resultFileName, String resultFormat, FileRepository validatedFilesfrepository) {
 
 		fileToStoreName = resultFileName;
 		validationResultFormat = resultFormat;
-		filesRepository = crudFilesRepository;
+		filesRepository = validatedFilesfrepository;
 	}
 
 	/**
+	 * Stores validation results to database, and based on the value of the
+	 * given flag {@code storeToDisk}, in special file named
+	 * {@code ValidationResults.txt} located in the project's direcotry
+	 * on disk. This method returns a discriptive message with information about
+	 * the manner of storing the validated file data, and the location of the
+	 * data.
 	 * 
 	 * @param validatedFile
+	 *            validated file that is to be persisted
 	 * @param storeToDisk
+	 *            flag that indicated if the validated file content is to be
+	 *            stored on disk
 	 * @throws StorageServiceException
+	 *             if results cannot be stored on disk
 	 */
 	public String storeValidationResults(File validatedFile, boolean storeToDisk) throws StorageServiceException {
 
-		filesRepository.saveAndFlush(validatedFile);
+		validatedFile = filesRepository.save(validatedFile);
 
 		String response = MessageFormat.format(env.getRequiredProperty(STORE_TO_DB_RESPONSE), validatedFile.getName());
 
 		if (storeToDisk) {
-			String validatedFormatedContent = validatedFile.toFormatedString(validationResultFormat);
+			String validatedFormatedContent = validatedFile.getRepresentation(validationResultFormat);
 			Path path = FileSystems.getDefault().getPath(fileToStoreName);
 			try {
 				Files.write(path, validatedFormatedContent.getBytes(), StandardOpenOption.CREATE);

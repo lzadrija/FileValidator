@@ -1,5 +1,5 @@
 /**
- * 
+ * Contains classes that handle file upload request.
  */
 package com.lzadrija.upload;
 
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * Contains Spring MVC configuration that defines a bean which returns the
- * configured {@link MultipartResolver}.
+ * configured {@link org.springframework.web.multipart.MultipartResolver}.
  * 
  * @author lzadrija
  * 
@@ -23,8 +23,11 @@ public class FileUploadConfiguration {
 	private static final int MAX_SIZE_UPLOAD_IN_MB = 5 * 1024 * 1024;
 
 	/**
-	 * Returns the {@link MultipartResolver} that defines common configuration
-	 * properties and parsing functionality for multipart requests.
+	 * Returns the {@link org.springframework.web.multipart.MultipartResolver}
+	 * that defines common configuration properties and parsing functionality
+	 * for multipart requests. The returned resolver contains the information
+	 * about maximum allowed size (in bytes) before uploads are refused
+	 * and maximum allowed size (in bytes) before uploads are written to disk.
 	 * 
 	 * @return multipart resolver
 	 */

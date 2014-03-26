@@ -26,14 +26,15 @@ public class Initializer implements WebApplicationInitializer {
 	private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
 
 	/**
-	 * Configures the given {@code ServletContext} with listener and servlet
-	 * that are necessary for initializing this web application.
+	 * Configures the given {@link javax.servlet.ServletContext} with listener
+	 * and servlet that are necessary for initializing this web application.
 	 * 
 	 * @param servletContext
 	 *            servlet context to be configured.
 	 * @throws ServletException
-	 *             if any call against the given {@code ServletContext} throws a
-	 *             {@code ServletException}
+	 *             if any call against the given
+	 *             {@link javax.servlet.ServletContext} throws a
+	 *             {@link javax.servlet.ServletException}
 	 */
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
