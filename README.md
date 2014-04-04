@@ -22,7 +22,7 @@ Every valid value must conform to the rules of the data type that is assigned to
 
 | VALUE TYPE    | VALID VALUES     |
 | ------------- | -----------------|
-| TEXT          | All Unicode[<sup>1</sup>][1] characters, except the non-printable[<sup>2</sup>][2] ones  |
+| TEXT          | All [Unicode][1] characters, except the [non-printable][2] ones  |
 | NUMBER        | Decimal number   |
 </center>
 <p></p> 
