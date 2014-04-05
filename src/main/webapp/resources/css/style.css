@@ -57,7 +57,8 @@ body
 {
 	font-size: 12px;
 	margin: 45px;
-	width: 480px;
+	width: calc(40% * 1.2);
+    height: calc(40% * 1.2);
 	text-align: left;
 	border-collapse: collapse;
 	border: 1px solid #6cf;

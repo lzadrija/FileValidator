@@ -1,0 +1,9 @@
+type=TEXT;value=The last bridge was made of rope and raw planks, and seemed to dissolve into nothingness, but that was only the fog. Mercy scampered across, her heels ringing on the wood.;
+type=TEXT;value=By basic equations, two basic theories are presented: 1. Theory of stock' s value v* (t) = v*(0) exp(ar*2 t); 2. Theory of conservation of stock' s energy. ;
+type=TEXT;value=THIS IS A DATA LINK ESCAPE: ;
+type=NUMBER;value=HashMap has slightly better performance than LinkedHashMap, but its iteration order is undefined;
+type=NUMBER;value=094855;
+type=NUMBER;value=-.56488;
+type=NUMBER;value=+894896.1849;
+type=TEXT;value=1234aaa;
+type=TEXT;value=1235.1256;
