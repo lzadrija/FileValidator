@@ -58,3 +58,7 @@ type=NUMBER;value=1234aaaaa;validation_result=INVALID;
 type=NUMBER;value=-.15411;validation_result=VALID;
 type=TEXT;value=1235;validation_result=VALID; 
 ```
+
+
+[1]: http://en.wikipedia.org/wiki/List_of_Unicode_characters        "List of unicode characters"
+[2]: http://web.itu.edu.tr/~sgunduz/courses/mikroisl/ascii.html        "List of non printable ASCII characters"
