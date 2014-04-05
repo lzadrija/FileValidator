@@ -72,13 +72,13 @@ Application was implemented using Eclipse IDE and unit-tested using JUnit and Mo
 <p></p>
 
 The main window shows an upload form. By clicking on the 'Yes' radio button, the user chooses to store the validation results to a separate file. The following image shows that the file 'FileExample.txt' was uploaded:  
-![Main window](https://github.com/lzadrija/FileValidator/blob/master/ApplicationSnapshots/MainForm.jpg)  
+![Main window](https://raw.githubusercontent.com/lzadrija/FileValidator/master/ApplicationSnapshots/MainForm.jpg)  
 
 By clicking on the 'VALIDATE' button, the file content validation is performed (if the uploaded file has the correct structure) and the validation results are represented in a separate window:   
-![Validation results](https://github.com/lzadrija/FileValidator/blob/master/ApplicationSnapshots/ValidationResults.jpg)
+![Validation results](https://raw.githubusercontent.com/lzadrija/FileValidator/master/ApplicationSnapshots/ValidationResults.jpg)
 
 If a file with an inappropriate structure was uploaded, a descriptive error message is shown:   
-![Error Illegal type](https://github.com/lzadrija/FileValidator/blob/master/ApplicationSnapshots/IllegalType.jpg)
+![Error Illegal type](https://raw.githubusercontent.com/lzadrija/FileValidator/master/ApplicationSnapshots/IllegalType.jpg)
 
 [1]: http://en.wikipedia.org/wiki/List_of_Unicode_characters        "List of unicode characters"
 [2]: http://web.itu.edu.tr/~sgunduz/courses/mikroisl/ascii.html        "List of non printable ASCII characters"
