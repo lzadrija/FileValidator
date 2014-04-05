@@ -13,20 +13,21 @@ body
 #table-form
 {
 	background-color: #EEFFEE;
-	padding: 10px 10px;
+	padding: 30px 30px;
 	border: 0px;
 	border-spacing: 5px;
+	font-size: 20px;
 }
 
 #radio
 {
-	font-size: 12px;
+	font-size: 15px;
 }
 
 #validate_button 
 {
 	padding: 5px 10px;
-	font-size: 17px;
+	font-size: 22px;
 	color: white;
 	background-color: #669;
 }
@@ -43,22 +44,22 @@ body
 	font-size: 15px;
 }
 
-#result-title, #return-link
+#result-title
+{
+	font-size: 22px;
+}
+
+#validation-info, #return-link
 {
 	font-size: 17px;
 }
 
-#validation-info
-{
-	font-size: 15px;
-}
-
 #results
 {
-	font-size: 12px;
+	font-size: 15px;
 	margin: 45px;
-	width: calc(40% * 1.2);
-    height: calc(40% * 1.2);
+	width: calc(50% * 1.2);
+    height: calc(50% * 1.2);
 	text-align: left;
 	border-collapse: collapse;
 	border: 1px solid #6cf;
@@ -68,8 +69,8 @@ body
 #results th
 {
 	padding: 20px;
+	font-size: 17px;
 	font-weight: normal;
-	font-size: 13px;
 	color: #039;
 	text-transform: uppercase;
 	border-right: 1px solid #0865c2;
@@ -80,6 +81,6 @@ body
 #results td
 {
 	padding: 10px 20px;
-	color: #669;
+	color: #3D2966;
 	border-right: 1px dashed #6cf;
 }
