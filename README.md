@@ -67,9 +67,9 @@ Application was implemented using Eclipse IDE and unit-tested using JUnit and Mo
 ##Installation & setup
 <p></p>
 
-In order to start the application, a few prerequisites must be met. The following must be downloaded and installed:
-1. [Java Development Kit (JDK) 7][3]
-2. [Apache Maven][4] build automation tool
+In order to start the application, a few prerequisites must be met. The following must be downloaded and installed:  
+1. [Java Development Kit (JDK) 7][3]  
+2. [Apache Maven][4] build automation tool  
 3. Database management system such as [PostgreSQL][5]  
 
 For establishing the connection to the desired database, the ```JpaConfiguration.properties``` file, located in the ```FileValidator\src\main\resources``` folder, should be updated. This file should contain:
