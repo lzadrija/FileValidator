@@ -132,6 +132,13 @@
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>9.1.3.v20140225</version>
+        <configuration>
+          <stopKey>STOP</stopKey>
+          <stopPort>9999</stopPort>
+          <webAppConfig>
+            <contextPath>/${project.artifactId}</contextPath>
+          </webAppConfig>
+        </configuration>
       </plugin>
     </plugins>
   </build>
