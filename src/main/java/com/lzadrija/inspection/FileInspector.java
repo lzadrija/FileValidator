@@ -36,6 +36,7 @@ import com.lzadrija.validation.value.ValueValidator;
 public class FileInspector {
 
 	private static final Logger logger = LoggerFactory.getLogger(FileInspector.class);
+	private static final String ENCODING = "utf-8";
 
 	private String entryStructure;
 	private Pattern entryPattern;
@@ -92,7 +93,7 @@ public class FileInspector {
 			return new FileInspectorResponse(file.getOriginalFilename(), InspectionStatus.FAIL, lines, getMsg(MsgKey.FILE_EMPTY));
 		}
 		String errorMsg = null;
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream(), ENCODING))) {
 			String line;
 			while ((line = br.readLine()) != null && errorMsg == null) {
 

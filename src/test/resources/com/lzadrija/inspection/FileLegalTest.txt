@@ -1,5 +1,5 @@
 type=TEXT;value=Prvi primjer nekog tekstatgero,hjrhtrhnegtthtr0vj4jmy84m04.trhn2t5m4tym4yvmm105k,1iuu.5.3k,111..u666605.3g2v03b 1428j56g2zs10.ol+4uy6t0e21sckfg,erhk.yj;
-type=TEXT;value=Drugi primjer nekog teksta	;
+type=TEXT;value=¡²³¤€¼½¾‘×¥’¬»«ÅÄ´¶Drugi primjer nekog teksta	;
 type=NUMBER;value=Prvi primjer nekog teksta;
 type=NUMBER;value=-1234.2156;
 type=NUMBER;value=1234aaa;

@@ -3,6 +3,7 @@
  */
 package com.lzadrija.persistence.db.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -95,20 +96,20 @@ public class File {
 	}
 
 	/**
-	 * Returns the string representation of this file that is created using
-	 * the given format.
+	 * Returns the list of formatted entries of this file that are formatted
+	 * using the given format.
 	 * 
 	 * @param format
 	 *            the format used to create the representetion of this file
-	 * @return formatted file representation
+	 * @return list of formatted entries
 	 */
-	public String getRepresentation(String format) {
+	public List<String> getFormattedEntries(String format) {
 
-		StringBuilder text = new StringBuilder();
+		List<String> formattedEntries = new ArrayList<>();
 		for (Entry entry : entries) {
-			text.append(entry.getRepresentation(format)).append(System.lineSeparator());
+			formattedEntries.add(entry.getRepresentation(format));
 		}
-		return text.toString();
+		return formattedEntries;
 	}
 
 	/**

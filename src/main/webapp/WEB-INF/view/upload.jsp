@@ -11,7 +11,7 @@
 <body>
     <center>
         <h1 id="title">File Validator</h1>
-        <form method="post" action="validation" enctype="multipart/form-data">
+        <form method="post" action="validation" enctype="multipart/form-data" accept-charset="utf-8">
             <table id="table-form">
                 <tr>
                     <td>Upload file to validate:</td>

@@ -5,11 +5,13 @@
 package com.lzadrija.persistence;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.text.MessageFormat;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +38,7 @@ public class StorageService {
 
 	private static final Logger logger = LoggerFactory.getLogger(StorageService.class);
 	private static final String PROJECT_DIR = "user.dir", STORE_TO_FILE_RESPONSE = "storeResultsToDisk.success",
-	        STORE_TO_DB_RESPONSE = "storeResultsToDb.success";
+	        STORE_TO_DB_RESPONSE = "storeResultsToDb.success", CHARSET = "utf-8";
 
 	private FileRepository filesRepository;
 	private String fileToStoreName, validationResultFormat;
@@ -92,10 +94,10 @@ public class StorageService {
 		String response = MessageFormat.format(env.getRequiredProperty(STORE_TO_DB_RESPONSE), validatedFile.getName());
 
 		if (storeToDisk) {
-			String validatedFormatedContent = validatedFile.getRepresentation(validationResultFormat);
+			List<String> validatedFormatedContent = validatedFile.getFormattedEntries(validationResultFormat);
 			Path path = FileSystems.getDefault().getPath(fileToStoreName);
 			try {
-				Files.write(path, validatedFormatedContent.getBytes(), StandardOpenOption.CREATE);
+				Files.write(path, validatedFormatedContent, Charset.forName(CHARSET), StandardOpenOption.CREATE);
 			} catch (IOException ioException) {
 				logger.error("Unable to write validation results to file: " + fileToStoreName, ioException);
 				throw new StorageServiceException("Unable to write validation results to file: " + fileToStoreName, ioException);
